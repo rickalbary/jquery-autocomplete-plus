@@ -8,22 +8,31 @@
     <!-- jQuery UI styles -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
     
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="/jquery-autocomplete/css/style.css">
+    <!-- Autocomplete styles -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-    <!-- Edit the options in beginning of the Javascript file: js > autocomplete.js -->
-    <div class="search-list-wrapper">
-        <input id="search-list" /><span class="search-list-icon"></span>
-        <button id="search-list-options">ALL</button>
+
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+         See the the JavaScript file autocomplete.js to:
+
+            • Edit the autocomplete gym names and url. 
+            • Change the placeholder text "SEARCH FOR YOUR GYM"
+         :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+
+    <div class="search-list-wrapper"> <!-- The autocomplete container -->
+        <input id="search-list" /> <!-- The search field -->
+        <span class="search-list-icon"></span> <!-- The span to contain the search icon -->
+        <button id="search-list-options">ALL</button> <!-- The button to show all the results -->
     </div>
 
 <!-- jQuery + jQuery UI -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-<!-- Custom JS -->
-<script src="/jquery-autocomplete/js/autocomplete.js"></script>
+<!--  Autocomplete JS -->
+<script src="js/autocomplete.js"></script>
 
 </body>
 </html>
