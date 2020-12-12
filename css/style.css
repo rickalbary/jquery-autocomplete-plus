@@ -1,0 +1,165 @@
+/* Demo styles
+   ------------------------------ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #e4eefa;
+}
+
+.search-list-wrapper {
+  transform: translateY(-50%);
+}
+
+/* Autocomplete feature
+   ------------------------------ */
+
+/* Color */
+:root {
+  --event: #5078ef;
+  --extra-light-gray: #e4eefa;
+  --light-gray: #dde2f1;
+  --medium-gray: #9fa3b1;
+  --shadow: #b3c6ff;
+  --light: #fff;
+}
+
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+.search-list-wrapper,
+.ui-autocomplete {
+  width: 31.25em;
+}
+
+/* Autocomplete wrapper */
+.search-list-wrapper {
+  background: var(--light);
+  border-radius: 0.35em;
+  height: 4em;
+  display: flex;
+  padding: 0;
+  box-shadow: 0 0.6em 0.4em -0.8em var(--shadow);
+}
+
+/* Autocomplete input */
+#search-list {
+  border: none;
+  background-color: transparent;
+  width: calc(70% - 2em);
+  font-size: 1em;
+  padding: 0 1em 0 2em;
+  position: relative;
+}
+
+/* Span that holds BG icon for autocomplete input */
+.search-list-icon {
+  position: relative;
+  height: 100%;
+  width: 2em;
+}
+
+.search-list-icon::before {
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  transform: translateY(-50%);
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  background-image: url("../svg/search-solid.svg");
+  background-repeat: no-repeat;
+  /* Use filter to change the icon color. Calculate filter at https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(39%) sepia(66%) saturate(1937%) hue-rotate(211deg)
+    brightness(98%) contrast(92%);
+}
+
+/* Button to show all autocomplete options */
+#search-list-options {
+  border: none;
+  background-color: transparent;
+  width: 30%;
+  border-left: 0.15em solid var(--light-gray);
+  color: var(--medium-gray);
+  position: relative;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: left;
+  margin: 0.8em;
+  padding: 0 1.8em;
+  position: relative;
+}
+
+#search-list-options::after {
+  position: absolute;
+  top: 48%;
+  right: 0;
+  transform: translateY(-50%);
+  content: "";
+  height: 1.5em;
+  width: 1.5em;
+  background-image: url("../svg/caret-down-solid.svg");
+  background-repeat: no-repeat;
+  /* Use filter to change the icon color. Calculate filter at https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(39%) sepia(66%) saturate(1937%) hue-rotate(211deg)
+    brightness(98%) contrast(92%);
+}
+
+/* Autocomplete focus
+   ------------------------------ */
+
+.ui-widget-content {
+  border: none;
+  background-image: none;
+}
+
+.ui-widget {
+  font-size: 1em;
+}
+
+.ui-autocomplete {
+  background: var(--light);
+  border-top: 1em solid var(--extra-light-gray);
+  padding: 1em 1.5em;
+}
+
+.ui-menu-item-wrapper {
+  padding: 0.5em;
+}
+
+.ui-menu-item:not(:first-child):last-child {
+  border-top: 1px solid var(--extra-light-gray);
+  margin-top: 1em;
+  padding-top: 1em;
+}
+
+.ui-menu-item-wrapper {
+}
+
+.ui-menu-item-wrapper:hover {
+  cursor: pointer;
+  color: var(--light) !important;
+  background: var(--event);
+}
+
+.ui-state-hover,
+.ui-state-active {
+  border: none !important;
+}
+
+/* Autocomplete font
+   ------------------------------ */
+.search-list-wrapper,
+.ui-widget {
+  font-family: "Montserrat", sans-serif;
+}
