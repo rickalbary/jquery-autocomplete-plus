@@ -14,7 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #e4eefa;
+  background: var(--extra-light-gray);
 }
 
 .search-list-wrapper {
@@ -26,19 +26,22 @@ body {
 
 /* Colors */
 :root {
-  --event: #5078ef;
+  --event: #282727;
   --extra-light-gray: #e4eefa;
   --light-gray: #dde2f1;
   --medium-gray: #9fa3b1;
   --shadow: #b3c6ff;
   --light: #fff;
 }
+/* NB – edit the SVG files directly to change the icons colors. */
 
 /* Font */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .search-list-wrapper,
-.ui-widget {
+.ui-widget,
+#search-list,
+#search-list-options {
   font-family: "Montserrat", sans-serif;
 }
 
@@ -48,13 +51,9 @@ body {
   width: 31.25em;
 }
 
-.ui-autocomplete,
-.search-list-wrapper {
-  border-radius: 0.35em;
-}
-
 /* Autocomplete wrapper */
 .search-list-wrapper {
+  border-radius: 0.35em;
   background: var(--light);
   border-radius: 0.35em;
   height: 4em;
@@ -91,9 +90,6 @@ body {
   width: 1.4em;
   background-image: url("../svg/search-solid.svg"); /* Local SVG version of Font Awesome icon */
   background-repeat: no-repeat;
-  /* Use filter to change the icon color. Calculate filter at https://codepen.io/sosuke/pen/Pjoqqp */
-  filter: invert(39%) sepia(66%) saturate(1937%) hue-rotate(211deg)
-    brightness(98%) contrast(92%);
 }
 
 /* Button to show all autocomplete options */
@@ -123,9 +119,6 @@ body {
   width: 1.5em;
   background-image: url("../svg/caret-down-solid.svg"); /* Local SVG version of Font Awesome icon */
   background-repeat: no-repeat;
-  /* Use filter to change the icon color. Calculate filter at https://codepen.io/sosuke/pen/Pjoqqp */
-  filter: invert(39%) sepia(66%) saturate(1937%) hue-rotate(211deg)
-    brightness(98%) contrast(92%);
 }
 
 /* Autocomplete focus:
@@ -145,19 +138,24 @@ body {
   background: var(--light);
   border-top: 1em solid var(--extra-light-gray);
   padding: 1em 1.5em;
+  max-height: 30vh; /* Restrict the size of the autocomplete list and add a scrollbar for extra content */
+  overflow: scroll;
 }
 
 .ui-menu-item-wrapper {
   padding: 0.5em;
 }
 
+/* 
+Last autocomplete list item:
+apply these styles if there is more than one item.
+If there is only one search result then we don't  
+*/
 .ui-menu-item:not(:first-child):last-child {
   border-top: 1px solid var(--extra-light-gray);
   margin-top: 1em;
   padding-top: 1em;
-}
-
-.ui-menu-item-wrapper {
+  padding-bottom: 1em;
 }
 
 .ui-menu-item-wrapper:hover {
