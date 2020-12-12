@@ -42,10 +42,15 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-/* Autocomplete field & results width */
+/* Autocomplete field & results layout */
 .search-list-wrapper,
 .ui-autocomplete {
   width: 31.25em;
+}
+
+.ui-autocomplete,
+.search-list-wrapper {
+  border-radius: 0.35em;
 }
 
 /* Autocomplete wrapper */
