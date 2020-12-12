@@ -1,5 +1,5 @@
 /* Demo styles
-   ------------------------------ */
+   ------------------------------------------------------------ */
 
 * {
   margin: 0;
@@ -22,9 +22,10 @@ body {
 }
 
 /* Autocomplete feature
-   ------------------------------ */
+   ------------------------------------------------------------ */
 
-/* Colors */
+/* Colors
+   ------------------------------ */
 :root {
   --event: #282727;
   --extra-light-gray: #e4eefa;
@@ -35,7 +36,8 @@ body {
 }
 /* NB – edit the SVG files directly to change the icons colors. */
 
-/* Font */
+/* Font 
+   ------------------------------ */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .search-list-wrapper,
@@ -45,13 +47,15 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-/* Autocomplete field & results layout */
+/* Search & results layout 
+   ------------------------------ */
 .search-list-wrapper,
 .ui-autocomplete {
   width: 31.25em;
 }
 
-/* Autocomplete wrapper */
+/* Autocomplete wrapper 
+   ------------------------------ */
 .search-list-wrapper {
   border-radius: 0.35em;
   background: var(--light);
@@ -62,7 +66,8 @@ body {
   box-shadow: 0 0.6em 0.4em -0.8em var(--shadow);
 }
 
-/* Autocomplete input */
+/* Autocomplete input 
+   ------------------------------ */
 #search-list {
   border: none;
   background-color: transparent;
@@ -72,14 +77,18 @@ body {
   position: relative;
 }
 
-/* Span that holds BG icon for autocomplete input */
+/* Span that holds BG icon 
+   for autocomplete input 
+   ------------------------------ */
 .search-list-icon {
   position: relative;
   height: 100%;
   width: 2em;
 }
 
-/* The span's BG icon */
+/* The span's BG icon 
+   ------------------------------ */
+
 .search-list-icon::before {
   position: absolute;
   top: 50%;
@@ -92,7 +101,8 @@ body {
   background-repeat: no-repeat;
 }
 
-/* Button to show all autocomplete options */
+/* Button to show all results 
+   ------------------------------ */
 #search-list-options {
   border: none;
   background-color: transparent;
@@ -108,7 +118,14 @@ body {
   position: relative;
 }
 
-/* Icon for the options */
+#search-list-options:hover,
+#search-list-options:focus,
+#search-list-options:active {
+  color: var(--event);
+}
+
+/* Icon for the button 
+   ------------------------------ */
 #search-list-options::after {
   position: absolute;
   top: 48%;
@@ -122,9 +139,9 @@ body {
 }
 
 /* Autocomplete focus:
-   Adjust the default jQuery UI styles and create the results box.
+   Adjust the default jQuery UI styles 
+   and create the results box.
    ------------------------------ */
-
 .ui-widget-content {
   border: none;
   background-image: none;
@@ -146,25 +163,33 @@ body {
   padding: 0.5em;
 }
 
-/* 
-Last autocomplete list item:
-apply these styles if there is more than one item.
-If there is only one search result then we don't  
-*/
-.ui-menu-item:not(:first-child):last-child {
-  border-top: 1px solid var(--extra-light-gray);
-  margin-top: 1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-}
-
-.ui-menu-item-wrapper:hover {
+.ui-menu-item-wrapper:hover,
+.ui-menu-item-wrapper:focus,
+.ui-menu-item-wrapper:active,
+.ui-menu .ui-menu-item.help a:hover,
+.ui-menu .ui-menu-item.help a:focus,
+.ui-menu .ui-menu-item.help a:active {
   cursor: pointer;
   color: var(--light) !important;
   background: var(--event);
 }
 
 .ui-state-hover,
+.ui-state-focus,
 .ui-state-active {
   border: none !important;
+}
+
+/* Help link styles (Can't find your gym?)
+   ------------------------------ */
+.ui-menu .ui-menu-item.help {
+  border-top: 1px solid var(--extra-light-gray);
+  margin-top: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-left: 0;
+}
+
+.ui-menu .ui-menu-item.help a {
+  padding: 0;
 }
