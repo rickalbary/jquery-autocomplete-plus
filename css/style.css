@@ -24,7 +24,7 @@ body {
 /* Autocomplete feature
    ------------------------------ */
 
-/* Color */
+/* Colors */
 :root {
   --event: #5078ef;
   --extra-light-gray: #e4eefa;
@@ -37,6 +37,12 @@ body {
 /* Font */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
+.search-list-wrapper,
+.ui-widget {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Autocomplete field & results width */
 .search-list-wrapper,
 .ui-autocomplete {
   width: 31.25em;
@@ -69,6 +75,7 @@ body {
   width: 2em;
 }
 
+/* The span's BG icon */
 .search-list-icon::before {
   position: absolute;
   top: 50%;
@@ -77,7 +84,7 @@ body {
   content: "";
   height: 1.4em;
   width: 1.4em;
-  background-image: url("../svg/search-solid.svg");
+  background-image: url("../svg/search-solid.svg"); /* Local SVG version of Font Awesome icon */
   background-repeat: no-repeat;
   /* Use filter to change the icon color. Calculate filter at https://codepen.io/sosuke/pen/Pjoqqp */
   filter: invert(39%) sepia(66%) saturate(1937%) hue-rotate(211deg)
@@ -100,6 +107,7 @@ body {
   position: relative;
 }
 
+/* Icon for the options */
 #search-list-options::after {
   position: absolute;
   top: 48%;
@@ -108,14 +116,15 @@ body {
   content: "";
   height: 1.5em;
   width: 1.5em;
-  background-image: url("../svg/caret-down-solid.svg");
+  background-image: url("../svg/caret-down-solid.svg"); /* Local SVG version of Font Awesome icon */
   background-repeat: no-repeat;
   /* Use filter to change the icon color. Calculate filter at https://codepen.io/sosuke/pen/Pjoqqp */
   filter: invert(39%) sepia(66%) saturate(1937%) hue-rotate(211deg)
     brightness(98%) contrast(92%);
 }
 
-/* Autocomplete focus
+/* Autocomplete focus:
+   Adjust the default jQuery UI styles and create the results box.
    ------------------------------ */
 
 .ui-widget-content {
@@ -155,11 +164,4 @@ body {
 .ui-state-hover,
 .ui-state-active {
   border: none !important;
-}
-
-/* Autocomplete font
-   ------------------------------ */
-.search-list-wrapper,
-.ui-widget {
-  font-family: "Montserrat", sans-serif;
 }
