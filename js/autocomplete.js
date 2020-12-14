@@ -34,6 +34,9 @@
   
 /* Variables to fill placeholder text, help link, and help text.
    ------------------------------------------------------------ */
+
+/* Placeholder text */
+
 if (window.matchMedia('(max-width: 500px)').matches)
 {
   // Placeholder text for small screens
@@ -43,11 +46,15 @@ if (window.matchMedia('(max-width: 500px)').matches)
   var placeholder = "Search for your gym";
 }
 
+/* The help/alert link */
 var helpLink = "https://google.com";
-var helpText = "Don’t see your gym here?"; // Use a real apostrophe: i.e. ’ instead of '
+
+/* The help/alert link text
+   NB – use a real apostrophe if you're not escaping the character: i.e. ’ instead of '  */
+   var helpText = "Don’t see your gym here?";
 
 
-/* Run functions
+/* Document ready
    ------------------------------------------------------------ */
 $(document).ready(function () {
 
@@ -58,33 +65,39 @@ $(document).ready(function () {
       // Go to the link when selected
       window.location = ui.item.url;
     },
-      response: function(event, ui) {
-            // ui.content is the array that's about to be sent to the response callback.
-            if (ui.content.length === 0) {
-                $("#alert").html("<ul tabindex='0' class='ui-widget ui-widget-content ui-front'><li class='ui-menu-item help'><div tabindex='-1' class='ui-menu-item-wrapper'><a href='" + helpLink + "'>" + helpText + "</a></div></li></ul>");
-            } else {
-                $("#alert").empty();
-            }
-        }
-  })
-});
-
-// Empty the alert when the user deletes the content in the input and clicks outside the field
-$('input#search-list').blur(function()
-{
-  if( $(this).val().length === 0 ) {
-    $("#alert").empty();
-  }
-});
-
-// Placeholder text
-$("#search-list").attr("placeholder", (placeholder));
-
-// Show options Button function
-$("#search-list-options").click(function () {
-    $("input#search-list").autocomplete({
-    minLength: 0, // 0 in order to show options on empty field focus
+    
+    response: function(event, ui) {
+      // Check if there are results.
+      if (ui.content.length === 0) {
+        // No results: push the alert message
+        $("#alert").html("<ul tabindex='0' class='ui-widget ui-widget-content ui-front'><li class='ui-menu-item help'><div tabindex='-1' class='ui-menu-item-wrapper'><a href='" + helpLink + "'>" + helpText + "</a></div></li></ul>");
+      } else {
+        // Results exist: do nothing
+        $("#alert").empty();
+      }
+    }
   });
+
+  // Empty the alert when the user deletes the input content and clicks outside the field
+  $('input#search-list').blur(function()
+  {
+    if( $(this).val().length === 0 ) {
+      $("#alert").empty();
+    }
+  });
+
+  // Add placeholder text
+  $("#search-list").attr("placeholder", (placeholder));
+  
+});
+
+/* Button function: Show all results 
+   ------------------------------------------------------------ */   
+$("#search-list-options").click(function () {
+  $("input#search-list").autocomplete({
+    minLength: 0, // 0 in order to show results on empty field focus
+  });
+  
   // Clear the field, set focus, and show all results
   $("#search-list").val("").removeAttr("selected").trigger("focus"),
   $("#search-list").autocomplete("search", $("#search-list").val());
@@ -92,10 +105,12 @@ $("#search-list-options").click(function () {
   $("<li class='ui-menu-item help'><div tabindex='-1' class='ui-menu-item-wrapper'><a href='" + helpLink + "'>" + helpText + "</a></div></li>").appendTo("ul");
 });
 
-// Add & remove focus class to the autocomplete wrapper 
-// Using CSS, change the z-index to raise the field above the autocomplete list that hides the focus outline.
+/* Add & remove focus class to the autocomplete wrapper 
+   Using CSS, change the z-index to raise the field above the 
+   autocomplete list that hides the focus outline.
+   ------------------------------------------------------------ */
 $("#search-list").focus(function() {
   $( ".search-list-wrapper" ).addClass( "focus" );
 }).blur(function() {
   $( ".search-list-wrapper" ).removeClass( "focus" );
-});
+});  
