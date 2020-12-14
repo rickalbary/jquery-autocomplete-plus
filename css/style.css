@@ -198,15 +198,19 @@ body {
 }
 
 .ui-autocomplete {
-  border-top: 1em solid var(--extra-light-gray);
-  padding: 1em 1.5em;
+  border-top: 1em solid var(--extra-light-gray); /* This acts as a spacer between the results and the field. */
+  padding: 1em 1.5em 0 1.5em;
   /* The next two rules restrict the size of the autocomplete list and add a scrollbar for extra content */
-  max-height: 30vh;
+  max-height: 16.2em;
   overflow: scroll;
 }
 
 .ui-menu-item-wrapper {
   padding: 0.5em;
+}
+
+.ui-menu-item:last-of-type {
+  padding-bottom: 1em;
 }
 
 .ui-menu-item-wrapper:hover,
@@ -239,4 +243,30 @@ body {
 
 .ui-menu .ui-menu-item.help a {
   padding: 0;
+}
+
+/* @media
+   ------------------------------ */
+
+@media screen and (max-width: 500px) {
+  #search-list {
+    width: calc(100% - 3em); /* 100% minus the width of #search-list-options */
+    flex-shrink: 0;
+  }
+
+  .search-list-icon::before {
+    /* Adjust the spacing and opacity of the icon – the button is removed at this width and the ALL icon needs to be most prominent. */
+    right: 1.1em;
+    opacity: 0.25;
+  }
+
+  #search-list-options {
+    width: 3em;
+    text-indent: -9999em; /* Removes the "ALL" button text */
+    padding: 0;
+  }
+
+  #search-list-options::after {
+    right: -0.5em; /* Center the icon */
+  }
 }
