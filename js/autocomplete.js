@@ -53,19 +53,38 @@ $(document).ready(function () {
 
   $("input#search-list").autocomplete({
     source: data,
-    minLength: 0, // 0 in order to show options on empty field focus
+    minLength: 1, // 0 in order to show options on empty field focus
     select: function (event, ui) {
       // Go to the link when selected
       window.location = ui.item.url;
-    }
-  });
-
-  // Placeholder text
-  $("#search-list").attr("placeholder", (placeholder));
+    },
+      response: function(event, ui) {
+            // ui.content is the array that's about to be sent to the response callback.
+            if (ui.content.length === 0) {
+                $("#alert").html("<ul tabindex='0' class='ui-widget ui-widget-content ui-front'><li class='ui-menu-item help'><div tabindex='-1' class='ui-menu-item-wrapper'><a href='" + helpLink + "'>" + helpText + "</a></div></li></ul>");
+            } else {
+                $("#alert").empty();
+            }
+        }
+  })
 });
+
+// Empty the alert when the user deletes the content in the input and clicks outside the field
+$('input#search-list').blur(function()
+{
+  if( $(this).val().length === 0 ) {
+    $("#alert").empty();
+  }
+});
+
+// Placeholder text
+$("#search-list").attr("placeholder", (placeholder));
 
 // Show options Button function
 $("#search-list-options").click(function () {
+    $("input#search-list").autocomplete({
+    minLength: 0, // 0 in order to show options on empty field focus
+  });
   // Clear the field, set focus, and show all results
   $("#search-list").val("").removeAttr("selected").trigger("focus"),
   $("#search-list").autocomplete("search", $("#search-list").val());
