@@ -26,12 +26,10 @@ $(document).ready(function () {
     { value: "Gym W", url: "https://google.com" },
     { value: "Gym X", url: "https://google.com" },
     { value: "Gym Y", url: "https://google.com" },
-    { value: "Gym Z", url: "https://google.com" },
+    { value: "Gym Z", url: "https://google.com" }
 
-    {
-      value: "Don't see your gym here?",
-      url: "https://google.com"
-    }
+    // NB - the help link is created in the button function located at the end of this file.
+
   ];
 
   $("input#search-list").autocomplete({
@@ -50,11 +48,20 @@ $(document).ready(function () {
   // .focus(function () {
   //   $(this).autocomplete("search", $(this).val());
   // })
+});
 
-  // Show options Button function
-  $("#search-list-options").click(function () {
-    // Clear the field, set focus, and show all results
-    $("#search-list").val("").removeAttr("selected").trigger("focus"),
-      $("#search-list").autocomplete("search", $("#search-list").val());
-  });
+// Show options Button function
+$("#search-list-options").click(function () {
+  // Clear the field, set focus, and show all results
+  $("#search-list").val("").removeAttr("selected").trigger("focus"),
+  $("#search-list").autocomplete("search", $("#search-list").val());
+  // Append help link to results list
+  $("<li class='ui-menu-item help'><div tabindex='-1' class='ui-menu-item-wrapper'><a href='https://google.com'>Don’t see your gym here?</a></div></li>").appendTo("ul");
+});
+
+// Add & remove focus class to the autocomplete wrapper 
+$("#search-list").focus(function() {
+  $( ".search-list-wrapper" ).addClass( "focus" );
+}).blur(function() {
+  $( ".search-list-wrapper" ).removeClass( "focus" );
 });
