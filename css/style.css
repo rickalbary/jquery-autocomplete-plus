@@ -184,6 +184,24 @@ body {
   background-repeat: no-repeat;
 }
 
+/* No results alert
+   ------------------------------ */
+#alert {
+  display: block;
+  width: 100%;
+  background-color: var(--light);
+  position: absolute;
+  top: 5em;
+}
+
+#alert ul {
+  padding: 1em 1.5em 0 1.5em;
+}
+
+#alert a {
+  text-decoration: none;
+}
+
 /* Autocomplete focus:
    Adjust the default jQuery UI styles 
    and create the results box.
